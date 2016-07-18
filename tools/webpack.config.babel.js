@@ -2,9 +2,9 @@
  * Created by cuitao-pc on 16/7/18.
  */
 
-var path = require("path");
+import path from "path";
 
-module.exports = {
+export default {
   context: path.resolve(__dirname, "../src"),
   entry: "./client",
   output: {
