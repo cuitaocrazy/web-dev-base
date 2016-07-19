@@ -25,7 +25,7 @@ var devClient = ["webpack-dev-server/client?http://" + opts.host + ":" + opts.po
 devClient.push("webpack/hot/dev-server");
 wpConfig.entry = devClient.concat(wpConfig.entry);
 
-wpConfig.plugins = wpConfig.plugins ? [].concat(wpConfig.plugins) : [new HotModuleReplacementPlugin()];
+wpConfig.plugins = wpConfig.plugins ? [new HotModuleReplacementPlugin()].concat(wpConfig.plugins) : [new HotModuleReplacementPlugin()];
 
 new WebpackDevServer(webpack(wpConfig), opts).listen(opts.port, opts.host, function (err) {
   if (err) throw err;

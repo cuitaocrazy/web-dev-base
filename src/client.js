@@ -1,7 +1,9 @@
 /**
  * Created by cuitao-pc on 16/7/18.
  */
+
 import 'bootstrap/less/bootstrap.less';
+// import j from 'jquery';
 
 function createElement(name, classes, parent) {
   var element = document.createElement(name);
@@ -14,6 +16,7 @@ function createElement(name, classes, parent) {
   if(parent) parent.appendChild(element);
   return element;
 }
+
 let div = createElement("div", "container", document.body);
 let btn = createElement("button", ["btn", "btn-success"], div);
 btn.textContent = "go";
