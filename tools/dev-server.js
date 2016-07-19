@@ -28,7 +28,6 @@ wpConfig.entry = devClient.concat(wpConfig.entry);
 wpConfig.plugins = wpConfig.plugins ? [].concat(wpConfig.plugins) : [new HotModuleReplacementPlugin()];
 
 new WebpackDevServer(webpack(wpConfig), opts).listen(opts.port, opts.host, function (err) {
-  console.log("hello!");
   if (err) throw err;
   console.log("http://" + opts.host + ":" + opts.port + "/");
 });

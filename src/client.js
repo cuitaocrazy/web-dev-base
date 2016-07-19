@@ -3,16 +3,18 @@
  */
 import 'bootstrap/less/bootstrap.less';
 
-function createElement(name, classes) {
+function createElement(name, classes, parent) {
   var element = document.createElement(name);
   var css = document.createAttribute("class");
-  css.value = classes.reduce((a, b) => a + " " + b);
-  element.setAttributeNode(css);
+  if (classes) {
+    css.value = Array.isArray(classes) ? classes.reduce((a, b) => a + " " + b) : classes;
+    element.setAttributeNode(css);
+  }
+
+  if(parent) parent.appendChild(element);
   return element;
 }
-let div = createElement("div", ["container"]);
-let btn = createElement("button", ["btn", "btn-success"]);
+let div = createElement("div", "container", document.body);
+let btn = createElement("button", ["btn", "btn-success"], div);
 btn.textContent = "go";
 btn.addEventListener('click', () => alert("go clicked"));
-div.appendChild(btn);
-document.body.appendChild(div);
