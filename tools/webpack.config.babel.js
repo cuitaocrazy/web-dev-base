@@ -9,6 +9,7 @@ export default {
   entry: "./client",
   output: {
     path: path.resolve(__dirname, "../build"),
-    filename: "[name].js"
+    filename: "[name].js",
+    publicPath: "/assets/"
   }
 };

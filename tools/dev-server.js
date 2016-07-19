@@ -1,37 +1,34 @@
 /**
  * Created by cuitao-pc on 16/7/18.
  */
+
 import WebpackDevServer from "webpack-dev-server";
 import  webpack from "webpack";
 import wpConfig from "./webpack.config.babel";
+import HotModuleReplacementPlugin from 'webpack/lib/HotModuleReplacementPlugin';
 
 const opts = {
   "host": "localhost",
   "port": 8080,
-  "publicPath": "/",
-  "outputPath": "/",
-  "filename": "bundle.js",
-  "hot": false,
-  "contentBase": "/Users/cuitao-pc/web_storm_test/react-dev-base/build",
+  "publicPath": wpConfig.output.publicPath ? wpConfig.output.publicPath: "/",
+  "contentBase": wpConfig.output.path ? wpConfig.output.path : "/",
+  "hot": true,
+  "inline": true,
   "stats": {
     "cached": false,
     "cachedAssets": false,
     "colors": {"level": 1, "hasBasic": true, "has256": false, "has16m": false}
   }
 };
-var protocol = "http:";
-// var wpConfig = {
-//   "module": {"loaders": [{"test": /\.js$/, "loader": "babel"}]},
-//   "output": {"path": "/", "filename": "bundle.js"},
-//   "entry": {"main": ["/Users/cuitao-pc/web_storm_test/hot_module_replacement_test/hmr_example.js"]},
-//   "context": "/Users/cuitao-pc/web_storm_test/hot_module_replacement_test"
-// };
+
+var devClient = ["webpack-dev-server/client?http://" + opts.host + ":" + opts.port];
+devClient.push("webpack/hot/dev-server");
+wpConfig.entry = devClient.concat(wpConfig.entry);
+
+wpConfig.plugins = wpConfig.plugins ? [].concat(wpConfig.plugins) : [new HotModuleReplacementPlugin()];
+
 new WebpackDevServer(webpack(wpConfig), opts).listen(opts.port, opts.host, function (err) {
   console.log("hello!");
   if (err) throw err;
-  if (opts.inline)
-    console.log(protocol + "://" + opts.host + ":" + opts.port + "/");
-  else
-    console.log(protocol + "://" + opts.host + ":" + opts.port + "/webpack-dev-server/");
-  console.log("123");
+  console.log("http://" + opts.host + ":" + opts.port + "/");
 });

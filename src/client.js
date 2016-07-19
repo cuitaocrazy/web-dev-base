@@ -3,3 +3,7 @@
  */
 
 console.log("hello world!");
+let div = document.createElement("div");
+div.innerHTML = "hello! aaaa";
+console.log(document.body);
+document.body.appendChild(div);
