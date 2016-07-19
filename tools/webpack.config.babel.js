@@ -8,8 +8,13 @@ export default {
   context: path.resolve(__dirname, "../src"),
   entry: "./client",
   output: {
-    path: path.resolve(__dirname, "../build"),
+    path: path.resolve(__dirname, "../build/assets"),
     filename: "[name].js",
     publicPath: "/assets/"
+  },
+  module: {
+    loaders: [
+      {test: /\.js$/, loader: "babel"}
+    ]
   }
 };
