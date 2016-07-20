@@ -23,6 +23,7 @@ const opts = {
 
 var devClient = ["webpack-dev-server/client?http://" + opts.host + ":" + opts.port];
 devClient.push("webpack/hot/dev-server");
+devClient.push("bootstrap-sass!../tools/bootstrap.config.js");
 
 if(typeof wpConfig.entry === "object" && !Array.isArray(wpConfig.entry)) {
   Object.keys(wpConfig.entry).forEach(function(key) {

@@ -5,12 +5,12 @@
 import path from "path";
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 export default {
   context: path.resolve(__dirname, "../src"),
   entry: {
     main: [
-      "./client",
-      "bootstrap-sass!../tools/bootstrap.config.prod.js"
+      "./client"
     ]
   },
   output: {
@@ -34,7 +34,6 @@ export default {
     "jquery": "jQuery"
   },
   plugins: [
-    new HtmlWebpackPlugin(),
-    new ExtractTextPlugin("styles.css")
+    new HtmlWebpackPlugin()
   ]
 };
