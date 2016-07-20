@@ -32,7 +32,7 @@
     "redux": "^3.5.2"
   },
   "scripts": {
-    "build": "webpack --config ./tools/webpack.config.babel.js",
+    "build": "babel-node ./tools/build",
     "start": "babel-node ./tools/dev-server"
   }
 }

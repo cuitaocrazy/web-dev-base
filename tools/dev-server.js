@@ -6,6 +6,7 @@ import WebpackDevServer from "webpack-dev-server";
 import  webpack from "webpack";
 import wpConfig from "./webpack.config.babel";
 import HotModuleReplacementPlugin from 'webpack/lib/HotModuleReplacementPlugin';
+import path from 'path';
 
 const opts = {
   "host": "localhost",
@@ -23,7 +24,7 @@ const opts = {
 
 var devClient = ["webpack-dev-server/client?http://" + opts.host + ":" + opts.port];
 devClient.push("webpack/hot/dev-server");
-devClient.push("bootstrap-sass!../tools/bootstrap.config.js");
+devClient.push("bootstrap-sass!" + path.resolve(__dirname, "./bootstrap.config.js"));
 
 if(typeof wpConfig.entry === "object" && !Array.isArray(wpConfig.entry)) {
   Object.keys(wpConfig.entry).forEach(function(key) {

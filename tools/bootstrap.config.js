@@ -9,10 +9,11 @@
  * disable components you don't use.
  *
  */
+var path = require('path');
 
 module.exports = {
-  preBootstrapCustomizations: '../src/theme/variables.scss',
-  mainSass: '../src/theme/bootstrap.overrides.scss',
+  preBootstrapCustomizations: path.resolve(__dirname, '../src/theme/variables.scss'),
+  mainSass: path.resolve(__dirname, '../src/theme/bootstrap.overrides.scss'),
   verbose: false,
   debug: false,
   scripts: {

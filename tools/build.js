@@ -4,7 +4,8 @@
 
 import webpack from 'webpack';
 import wpConfig from './webpack.config.babel';
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import path from 'path';
 
 const plugins = [
   new ExtractTextPlugin("styles"),
@@ -19,7 +20,7 @@ const plugins = [
 
 wpConfig.plugins = wpConfig.plugins ? plugins.concat(wpConfig.plugins) : plugins;
 
-const devClient = ["bootstrap-sass!../tools/bootstrap.config.prod.js"];
+const devClient = ["bootstrap-sass!" + path.resolve(__dirname, "./bootstrap.config.prod.js")];
 
 if (typeof wpConfig.entry === "object" && !Array.isArray(wpConfig.entry)) {
   Object.keys(wpConfig.entry).forEach(function (key) {
