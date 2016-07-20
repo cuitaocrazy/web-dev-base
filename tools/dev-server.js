@@ -23,7 +23,14 @@ const opts = {
 
 var devClient = ["webpack-dev-server/client?http://" + opts.host + ":" + opts.port];
 devClient.push("webpack/hot/dev-server");
-wpConfig.entry = devClient.concat(wpConfig.entry);
+
+if(typeof wpConfig.entry === "object" && !Array.isArray(wpConfig.entry)) {
+  Object.keys(wpConfig.entry).forEach(function(key) {
+    wpConfig.entry[key] = devClient.concat(wpConfig.entry[key]);
+  });
+} else {
+  wpConfig.entry = devClient.concat(wpConfig.entry);
+}
 
 wpConfig.plugins = wpConfig.plugins ? [new HotModuleReplacementPlugin()].concat(wpConfig.plugins) : [new HotModuleReplacementPlugin()];
 

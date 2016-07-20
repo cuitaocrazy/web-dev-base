@@ -2,9 +2,6 @@
  * Created by cuitao-pc on 16/7/18.
  */
 
-import 'bootstrap/less/bootstrap.less';
-// import j from 'jquery';
-
 function createElement(name, classes, parent) {
   var element = document.createElement(name);
   var css = document.createAttribute("class");
