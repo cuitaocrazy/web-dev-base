@@ -8,7 +8,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import path from 'path';
 
 const plugins = [
-  new ExtractTextPlugin("styles"),
+  new ExtractTextPlugin("styles.css"),
   new webpack.optimize.DedupePlugin(),
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.optimize.UglifyJsPlugin({
