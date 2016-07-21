@@ -12,7 +12,7 @@ const opts = {
   "host": "localhost",
   "port": 8080,
   "publicPath": wpConfig.output.publicPath ? wpConfig.output.publicPath: "/",
-  "contentBase": wpConfig.output.path ? wpConfig.output.path : "/",
+  "contentBase": wpConfig.output.path ? path.resolve(wpConfig.output.path, "../") : "/",
   "hot": true,
   "inline": true,
   "stats": {
