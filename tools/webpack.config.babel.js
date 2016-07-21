@@ -10,7 +10,8 @@ export default {
   context: path.resolve(__dirname, "../src"),
   entry: {
     main: [
-      "./client"
+      "./client",
+      "jquery"
     ]
   },
   output: {
@@ -21,6 +22,7 @@ export default {
   module: {
     loaders: [
       { test: /\.js$/, loader: "babel", include: path.resolve(__dirname, "../src") },
+      { test: /bootstrap-sass\/assets\/javascripts\//, loader: 'imports?jQuery=jquery' },
       { test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap!autoprefixer?browsers=last 2 version!less?outputStyle=expanded&sourceMap=true&sourceMapContents=true') },
       { test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true') },
       { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
@@ -30,9 +32,9 @@ export default {
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
     ]
   },
-  externals: {
-    "jquery": "jQuery"
-  },
+  // externals: {
+  //   "jquery": "jQuery"
+  // },
   plugins: [
     new HtmlWebpackPlugin()
   ]

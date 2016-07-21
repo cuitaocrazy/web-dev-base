@@ -1,7 +1,6 @@
 /**
  * Created by cuitao-pc on 16/7/18.
  */
-
 function createElement(name) {
   var element = document.createElement(name);
 
@@ -11,7 +10,7 @@ function createElement(name) {
 function appendClasses(classes) {
   var css = document.createAttribute("class");
   if (classes) {
-    css.value = Array.isArray(classes) ? classes.reduce((a, b) => a + " " + b) : classes;
+    css.value = Array.isArray(classes) ? classes.reduce((a, b) => a + " " + b, "") : classes;
     this.setAttributeNode(css);
   }
   return appendToParent.bind(this);
